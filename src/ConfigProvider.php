@@ -10,7 +10,8 @@ declare(strict_types=1);
  */
 namespace HyperfExt\Elasticsearch;
 
-use Elasticsearch\Client;
+
+use Elastic\Elasticsearch\Client;
 
 class ConfigProvider
 {

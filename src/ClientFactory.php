@@ -10,13 +10,14 @@ declare(strict_types=1);
  */
 namespace HyperfExt\Elasticsearch;
 
-use Elasticsearch\ClientBuilder;
+use Elastic\Elasticsearch\ClientBuilder;
 use Hyperf\Contract\ConfigInterface;
 use Hyperf\Guzzle\RingPHP\CoroutineHandler;
 use Hyperf\Guzzle\RingPHP\PoolHandler;
 use Hyperf\Logger\LoggerFactory;
 use Psr\Container\ContainerInterface;
 use Swoole\Coroutine;
+use GuzzleHttp\Client;
 use function Hyperf\Support\make;
 
 class ClientFactory
@@ -28,13 +29,9 @@ class ClientFactory
         $clientConfig = $config['client'];
         $loggerConfig = $config['logger'];
 
-        if (! isset($clientConfig['handler']) and Coroutine::getCid() > 0) {
-            $handler = $config['pool']['enabled']
-                ? make(PoolHandler::class, [
-                    'option' => $config['pool'],
-                ])
-                : make(CoroutineHandler::class);
-            $clientConfig['handler'] = $handler;
+        if (! isset($clientConfig['httpClient']) and Coroutine::getCid() > 0) {
+
+            $clientConfig['httpClient'] = new Client();
         }
 
         if (! isset($clientConfig['logger']) and $loggerConfig['enabled']) {

@@ -42,17 +42,4 @@ return [
         'group' => 'default',
     ],
 
-    /*
-    |--------------------------------------------------------------------------
-    | Connection Pool Options
-    |--------------------------------------------------------------------------
-    */
-
-    'pool' => [
-        'enabled' => false,
-        'min_connections' => 1,
-        'max_connections' => 30,
-        'wait_timeout' => 3.0,
-        'max_idle_time' => 60.0,
-    ],
 ];
