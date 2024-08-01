@@ -28,7 +28,7 @@
     "require": {
         "php": ">=8.1",
         "ext-swoole": ">=5.0",
-        "elasticsearch/elasticsearch": "7.17.x-dev",
+        "elasticsearch/elasticsearch": "^7.0",
         "hyperf/config": "~3.1.0",
         "hyperf/di": "~3.1.0",
         "hyperf/framework": "~3.1.0",
